@@ -93,6 +93,9 @@ int mainThrows(int argc, char * argv[])
 
     uint64 requestedID = (uint64)read_number(argv[optind]);
     uint64 requestedRelativeOffset = (uint64)read_number(argv[optind + 1]);
+    std::cout << "DEBUG: requestedID " << requestedID << std::endl
+              << "       requestedRelativeOffset " << requestedRelativeOffset << std::endl;
+
 
     #ifdef _MSC_VER
     // Increase the priority a bit to improve context switching delays on Windows
@@ -113,6 +116,7 @@ int mainThrows(int argc, char * argv[])
     {
         if (instances.empty())
         {
+          std::cout << "DEBUG line 119" << std::endl;
             for (size_t i = 0; i < TPMIHandle::getNumInstances(); ++i)
             {
                 instances.push_back(i);
@@ -120,6 +124,7 @@ int mainThrows(int argc, char * argv[])
         }
         for (const size_t i : instances)
         {
+          std::cout << "DEBUG line 127" << std::endl;
             if (i >= TPMIHandle::getNumInstances())
             {
                 std::cerr << "Instance " << i << " does not exist\n";
@@ -143,10 +148,12 @@ int mainThrows(int argc, char * argv[])
             };
             if (entries.empty())
             {
+              std::cout << "DEBUG entries is empty " << std::endl;
                 for (size_t p = 0; p < h.getNumEntries(); ++p)
                 {
                     entries.push_back(p);
                 }
+                std::cout << "DEBUG " << entries.size() << std::endl;
             }
             for (const size_t p : entries)
             {
