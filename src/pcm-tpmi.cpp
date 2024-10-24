@@ -121,6 +121,7 @@ int mainThrows(int argc, char * argv[])
             {
                 instances.push_back(i);
             }
+            std::cout << "DEBUG instances: " << instances.size() << std::endl;
         }
         for (const size_t i : instances)
         {
