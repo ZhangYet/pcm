@@ -116,6 +116,7 @@ public:
     }
     uint32 getNumInstances()
     {
+      std::cout << "DEBUG msr.h " << std::endl;
         if (pHandle)
             return pHandle->getNumInstances();
 
